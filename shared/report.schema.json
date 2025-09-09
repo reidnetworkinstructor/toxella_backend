@@ -1,0 +1,58 @@
+{
+  "$id": "https://toxella.app/report.schema.json",
+  "version": "0.1",
+  "type": "object",
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "num_images": {
+          "type": "number"
+        },
+        "language": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "num_images",
+        "language",
+        "device"
+      ]
+    },
+    "analysis": {
+      "type": "object",
+      "properties": {
+        "risk_score": {
+          "type": "number"
+        },
+        "risk_bucket": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number"
+        },
+        "summary": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "risk_score",
+        "risk_bucket",
+        "confidence",
+        "summary"
+      ]
+    }
+  }
+}

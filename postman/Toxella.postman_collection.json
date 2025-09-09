@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "Toxella",
+    "_postman_id": "d3b9a5a9-1111-2222-3333-444444444444",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseApi",
+      "value": "https://toxella-api-REPLACE.a.run.app"
+    },
+    {
+      "key": "jobId",
+      "value": ""
+    },
+    {
+      "key": "reportId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1) Get Signed URLs (free x3)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"plan\":\"free\",\n  \"count\":3\n}"
+        },
+        "url": {
+          "raw": "{{baseApi}}/signed-urls",
+          "host": [
+            "{{baseApi}}"
+          ],
+          "path": [
+            "signed-urls"
+          ]
+        }
+      }
+    },
+    {
+      "name": "2) Create Job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": \"{{jobId}}\",\n  \"plan\": \"free\",\n  \"files\": [\n    {\"path\":\"uploads/{{jobId}}/0.jpg\",\"size\":1234,\"mime\":\"image/jpeg\"},\n    {\"path\":\"uploads/{{jobId}}/1.jpg\",\"size\":1234,\"mime\":\"image/jpeg\"}\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseApi}}/jobs",
+          "host": [
+            "{{baseApi}}"
+          ],
+          "path": [
+            "jobs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3) Poll Job",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseApi}}/jobs/{{jobId}}",
+          "host": [
+            "{{baseApi}}"
+          ],
+          "path": [
+            "jobs",
+            "{{jobId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "4) Get Report",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseApi}}/reports/{{reportId}}",
+          "host": [
+            "{{baseApi}}"
+          ],
+          "path": [
+            "reports",
+            "{{reportId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "5) Delete-All (user)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"userId\": \"user_abc\" }"
+        },
+        "url": {
+          "raw": "{{baseApi}}/delete-all",
+          "host": [
+            "{{baseApi}}"
+          ],
+          "path": [
+            "delete-all"
+          ]
+        }
+      }
+    }
+  ]
+}
