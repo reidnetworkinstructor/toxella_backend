@@ -15,6 +15,8 @@ const PRO_MAX = parseInt(process.env.PRO_MAX_IMAGES || '15', 10);
 
 const firestore = new Firestore();
 const storage = new Storage();
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+console.log('OPENAI_API_KEY loaded:', process.env.OPENAI_API_KEY ? 'YES (length: ' + process.env.OPENAI_API_KEY.length + ')' : 'NO - undefined');
 const visionClient = new vision.ImageAnnotatorClient();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
